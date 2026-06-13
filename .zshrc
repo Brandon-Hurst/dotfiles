@@ -73,8 +73,6 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(
     git
     fzf
-#    zsh-autosuggestions
-    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
