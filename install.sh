@@ -31,6 +31,20 @@ else
   curl -sS https://starship.rs/install.sh | sh -s -- --yes
 fi
 
+# --- JetBrainsMono Nerd Font ----------------------------------------------
+FONT_DIR="$HOME/.local/share/fonts/JetBrainsMono"
+if fc-list | grep -qi "JetBrainsMono"; then
+  info "JetBrainsMono Nerd Font already installed"
+else
+  info "Installing JetBrainsMono Nerd Font"
+  mkdir -p "$FONT_DIR"
+  curl -fLo /tmp/JetBrainsMono.zip \
+    https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+  unzip -o /tmp/JetBrainsMono.zip '*.ttf' -d "$FONT_DIR"
+  fc-cache -fv
+  rm /tmp/JetBrainsMono.zip
+fi
+
 # --- Link config files ----------------------------------------------------
 info "Linking config files into \$HOME"
 mkdir -p "$HOME/.config/ghostty"
@@ -56,6 +70,5 @@ fi
 
 info "Done. Notes:"
 echo "  - Install Ghostty separately: https://ghostty.org/download"
-echo "  - Install JetBrainsMono Nerd Font: https://www.nerdfonts.com/"
 echo "  - On Debian/Ubuntu, bat is invoked as 'batcat' (the .zshrc aliases bat=batcat)."
 echo "  - Open a new terminal (or run 'exec zsh') to pick up the changes."
