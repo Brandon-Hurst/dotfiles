@@ -1,0 +1,24 @@
+
+command = zsh
+
+font-family = "JetBrainsMono Nerd Font"
+font-size = 13
+
+
+# Style Palette
+background = #111111
+foreground = #e8dcc0
+cursor-color = #d4a44b
+selection-background = #333333
+palette = 0=#1a1a1a
+palette = 1=#c27c2c
+palette = 2=#d4a44b
+palette = 3=#e0b860
+palette = 4=#8aa6c1
+palette = 5=#b48ead
+palette = 6=#88c0d0
+palette = 7=#e8dcc0
+palette = 8=#9b9286
+
+# Make bold text brighter
+bold-is-bright = true
