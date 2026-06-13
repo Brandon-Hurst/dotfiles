@@ -23,9 +23,12 @@ The `.zshrc` expects these to be installed (otherwise the shell won't look/behav
 
 ```sh
 git clone <your-repo-url> ~/dotfiles
-cp ~/dotfiles/.zshrc ~/.zshrc
-cp -r ~/dotfiles/.config/ghostty ~/.config/
-cp ~/dotfiles/.config/starship.toml ~/.config/
+~/dotfiles/install.sh
 ```
 
-Then reload Ghostty (`Ctrl+Shift+,`) or restart it, and open a new shell.
+`install.sh` (Debian/Ubuntu) installs the dependencies above — apt packages, Oh My
+Zsh, and Starship — then symlinks the config files into place (backing up any
+existing file to `*.bak`) and sets zsh as the default shell.
+
+Ghostty itself and the Nerd Font are not installed by the script — see the links
+above. Afterwards, reload Ghostty (`Ctrl+Shift+,`) or restart it, and open a new shell.
