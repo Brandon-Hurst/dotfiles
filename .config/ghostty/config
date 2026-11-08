@@ -22,3 +22,7 @@ palette = 8=#9b9286
 
 # Make bold text brighter
 bold-is-bright = true
+
+# Alt+E: copy last command, its directory, and output
+keybind = alt+e=write_scrollback_file:copy
+keybind = chain=text:\x1b[9001~

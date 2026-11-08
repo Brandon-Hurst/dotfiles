@@ -121,4 +121,32 @@ alias poll_dmesg='sudo dmesg --follow'
 alias rebuild='west build --pristine'
 alias flash='west flash -r jlink'
 alias bat='batcat'
+alias fmtclip='xclip -selection clipboard -o |
+    clang-format |
+    xclip -selection clipboard'
+
 export PATH="$HOME/.local/bin:$PATH"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Arm GNU Toolchain 15.2.rel1 (installed for ports/analog, apt only has v13)
+export PATH="$HOME/.local/opt/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi/bin:$PATH"
+alias beagle_login='xterm -e ssh debian@192.168.7.2 &'
+
+# Man pages in Neovim (:Man, gO = outline, aerial sidebar via <leader>cs).
+# To revert to bat: comment the nvim line and uncomment the batcat line.
+# (batcat on Debian/Ubuntu; alias isn't visible to sh)
+# nvim is an AppImage; its FUSE mount fails (EACCES) when launched by man, so extract-and-run instead.
+export MANPAGER='env APPIMAGE_EXTRACT_AND_RUN=1 nvim +Man!'
+# export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANROFFOPT="-c"
+source ~/.config/ghostty/copy-last.zsh
+alias help='run-help'
+
+# cq: prefix each clipboard line with "> " (for pasting into an Obsidian callout)
+cq() {
+  xclip -o -selection clipboard | awk '{ print "> " $0 }' | xclip -selection clipboard
+}
